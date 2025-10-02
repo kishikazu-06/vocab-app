@@ -1,0 +1,295 @@
+:root {
+  --primary-color: #007bff; /* 青 */
+  --secondary-color: #6c757d; /* 灰色 */
+  --success-color: #28a745; /* 緑 */
+  --danger-color: #dc3545; /* 赤 */
+  --background-light: #f8f9fa; /* 薄い背景 */
+  --background-dark: #343a40; /* 濃い背景 (必要であれば) */
+  --text-color: #212529; /* 暗いテキスト */
+  --border-color: #dee2e6; /* 薄い境界線 */
+  --shadow-light: rgba(0, 0, 0, 0.1);
+}
+
+body {
+  font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+  line-height: 1.6;
+  color: var(--text-color);
+  background-color: var(--background-light);
+  margin: 0;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* 上部に寄せる */
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+.container {
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px var(--shadow-light);
+  padding: 30px;
+  width: 100%;
+  max-width: 600px;
+  text-align: center;
+}
+
+h1 {
+  color: var(--primary-color);
+  margin-bottom: 30px;
+  font-size: 2.2em;
+  font-weight: 600;
+}
+
+h2 {
+  color: var(--text-color);
+  margin-top: 25px;
+  margin-bottom: 20px;
+  font-size: 1.8em;
+}
+
+.main-nav {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 30px;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 15px;
+}
+
+.nav-button {
+  background-color: transparent;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1.1em;
+  cursor: pointer;
+  color: var(--secondary-color);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.nav-button:hover {
+  color: var(--primary-color);
+}
+
+.nav-button.active {
+  color: var(--primary-color);
+  font-weight: bold;
+}
+
+.nav-button.active::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -16px; /* border-bottomの高さ分調整 */
+  width: 100%;
+  height: 3px;
+  background-color: var(--primary-color);
+  border-radius: 2px;
+  animation: slideIn 0.3s forwards;
+}
+
+@keyframes slideIn {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+.main-content {
+  padding-top: 20px;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="password"],
+input[type="email"],
+#answer, #en, #ja {
+  width: calc(100% - 20px);
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid var(--border-color);
+  border-radius: 5px;
+  font-size: 1em;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease;
+}
+
+input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+}
+
+button {
+  background-color: var(--primary-color);
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  padding: 12px 25px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  margin: 5px;
+}
+
+button:hover {
+  background-color: #0056b3; /* primary-colorの少し濃い色 */
+  transform: translateY(-2px);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+/* Specific button styles for clarity */
+#check, #add {
+  margin-top: 10px;
+  width: auto; /* ボタンの幅をコンテンツに合わせる */
+}
+
+/* Result messages */
+#result {
+  margin-top: 20px;
+  font-size: 1.2em;
+  font-weight: bold;
+  min-height: 1.6em; /* 結果表示領域の高さを確保 */
+}
+
+/* List view */
+ul {
+  list-style: none;
+  padding: 0;
+  max-height: 400px; /* スクロール可能にする */
+  overflow-y: auto;
+  border: 1px solid var(--border-color);
+  border-radius: 5px;
+  background-color: #fefefe;
+  margin-top: 20px;
+}
+
+ul li {
+  padding: 12px 15px;
+  border-bottom: 1px solid var(--border-color);
+  text-align: left;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+ul li:last-child {
+  border-bottom: none;
+}
+
+ul li:nth-child(even) {
+  background-color: var(--background-light);
+}
+
+ul li span {
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+p {
+  font-size: 1em;
+  color: var(--text-color);
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  .container {
+    padding: 20px;
+    margin: 10px;
+  }
+  h1 {
+    font-size: 1.8em;
+  }
+  .main-nav {
+    flex-direction: column;
+  }
+  .nav-button {
+    width: 100%;
+    margin-bottom: 5px;
+  }
+  input, button {
+    font-size: 0.9em;
+    padding: 10px;
+  }
+}
+
+.learn-header { /* ★追加 */
+  display: flex;
+  justify-content: flex-end; /* 右寄せ */
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  border-bottom: 1px dashed var(--border-color);
+}
+
+.consecutive-count { /* ★追加 */
+  font-size: 1.1em;
+  font-weight: bold;
+  color: var(--secondary-color);
+}
+
+.consecutive-count #consecutiveCorrect { /* ★追加 */
+  color: var(--success-color);
+  margin-left: 5px;
+}
+
+.delete-button { /* ★追加 */
+  background-color: var(--danger-color);
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  padding: 6px 12px;
+  font-size: 0.85em;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  margin-left: 10px; /* 単語との間隔 */
+  flex-shrink: 0; /* 縮まないようにする */
+}
+
+.delete-button:hover {
+  background-color: #c82333; /* danger-colorの少し濃い色 */
+  transform: translateY(-1px);
+}
+
+.delete-button:active {
+  transform: translateY(0);
+}
+
+.add-instruction { /* ★追加 */
+  font-size: 0.9em;
+  color: var(--secondary-color);
+  margin-bottom: 20px;
+  line-height: 1.5;
+  text-align: left; /* 左寄せ */
+}
+
+textarea#wordsInput { /* ★追加 */
+  width: calc(100% - 20px);
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid var(--border-color);
+  border-radius: 5px;
+  font-size: 1em;
+  box-sizing: border-box;
+  resize: vertical; /* 縦方向のみリサイズ可能にする */
+  min-height: 150px; /* 最小高さを設定 */
+  transition: border-color 0.3s ease;
+}
+
+textarea#wordsInput:focus { /* ★追加 */
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+}
+
+/* ボタンが入力フォームの下に来るように調整 */
+#addMultiple { /* ★追加 */
+  margin-top: 10px;
+  width: auto;
+}

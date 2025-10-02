@@ -4,15 +4,18 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Bit英単語テスト</title>
+  <link rel="stylesheet" href="style.css">
   <script src="app.js" defer></script>
 </head>
 <body>
-  <h1>Bit英単語テスト  </h1>
-  <nav>
-    <button id="modeLearn">学習</button>
-    <button id="modeList">リスト</button>
-    <button id="modeAdd">追加</button>
-  </nav>
-  <main id="view"></main>
+  <div class="container">
+    <h1>Bit英単語テスト</h1>
+    <nav class="main-nav">
+      <button id="modeLearn" class="nav-button active">学習</button>
+      <button id="modeList" class="nav-button">リスト</button>
+      <button id="modeAdd" class="nav-button">追加</button>
+    </nav>
+    <main id="view" class="main-content"></main>
+  </div>
 </body>
 </html>
